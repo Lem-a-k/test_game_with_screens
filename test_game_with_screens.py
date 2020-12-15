@@ -1,7 +1,6 @@
 import pygame
 import os
 import sys
-import argparse
 
 BACKS = ["background1.jpg", "background2.jpg"]
 PLAYER = "mario.png"
@@ -26,6 +25,7 @@ def terminate():
     pygame.quit()
     sys.exit()
 
+
 def print_back(intro_text, pic=None):
     if pic is None:
         screen.fill((200, 100, 200))
@@ -43,9 +43,10 @@ def print_back(intro_text, pic=None):
         text_coord += intro_rect.height
         screen.blit(string_rendered, intro_rect)
 
+
 def start_screen():
     print_back(["Это экран приветствия",
-                  "Клавиатура - начать игру", "Мышка - настройки"], BACKS[0])
+                "Клавиатура - начать игру", "Мышка - настройки"], BACKS[0])
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -57,9 +58,10 @@ def start_screen():
         pygame.display.flip()
         clock.tick(FPS)
 
+
 def settings_screen():
     print_back(["Это экран c настройками",
-                  "Клавиатура - играть"], BACKS[1])
+                "Клавиатура - играть"], BACKS[1])
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -68,6 +70,7 @@ def settings_screen():
                 return GAME
         pygame.display.flip()
         clock.tick(FPS)
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, group):
@@ -116,7 +119,7 @@ def game_screen(new_game=False):
 
 def results_screen():
     print_back(["Это экран с результатами",
-                  "Клавиатура - сыграть снова", "Мышка - настройки"], BACKS[0])
+                "Клавиатура - сыграть снова", "Мышка - настройки"], BACKS[0])
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -150,7 +153,6 @@ screen_size = (600, 600)
 screen = pygame.display.set_mode(screen_size)
 FPS = 50
 clock = pygame.time.Clock()
-
 
 hero_group = pygame.sprite.GroupSingle()
 hero = Player(hero_group)
